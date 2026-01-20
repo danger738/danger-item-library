@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 DANGER ITEM LIBRARY - Complete Free Fire Database</title>
+    <meta name="description" content="Complete Free Fire item database with advanced filtering, search, and automatic JSON data loading. Created by t.me/danger_ff_like">
+    <meta name="author" content="DANGER FF - t.me/danger_ff_like">
+    <meta name="keywords" content="free fire, items, database, danger ff, item library, ff items">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://danger-item-library.netlify.app/">
+    <meta property="og:title" content="🔥 DANGER ITEM LIBRARY - Complete Free Fire Database">
+    <meta property="og:description" content="Complete Free Fire item database with advanced filtering, search, and automatic JSON data loading">
+    <meta property="og:image" content="https://raw.githubusercontent.com/DANGER-FF/danger-item-library/main/logo.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://danger-item-library.netlify.app/">
+    <meta property="twitter:title" content="🔥 DANGER ITEM LIBRARY - Complete Free Fire Database">
+    <meta property="twitter:description" content="Complete Free Fire item database with advanced filtering, search, and automatic JSON data loading">
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/DANGER-FF/danger-item-library/main/logo.png">
+    
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Developer Credit -->
+    <meta name="developer" content="t.me/danger_ff_like">
+    <meta name="telegram" content="@danger_ff_like">
+</head>
+<body>
+    <!-- Developer Watermark -->
+    <div class="developer-watermark">
+        <span>Developer: <a href="https://t.me/danger_ff_like" target="_blank">t.me/danger_ff_like</a></span>
+    </div>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="logo.png" alt="DANGER ITEM LIBRARY Logo" class="logo">
+                    <div class="title-section">
+                        <h1><i class="fas fa-fire"></i> DANGER ITEM LIBRARY</h1>
+                        <p class="subtitle">Complete Free Fire Item Database | Automatically Updated</p>
+                        <div class="developer-credit">
+                            <i class="fas fa-code"></i> Developer: 
+                            <a href="https://t.me/danger_ff_like" target="_blank" class="dev-link">
+                                @danger_ff_like
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Channel Links -->
+                <div class="channels-section">
+                    <h3><i class="fas fa-broadcast-tower"></i> Our Channels</h3>
+                    <div class="channel-buttons">
+                        <a href="https://t.me/FREEFIRELIKESDANGER" target="_blank" class="channel-btn main-channel">
+                            <i class="fab fa-telegram"></i> Main Channel
+                        </a>
+                        <a href="https://t.me/DANGERFREEAPIS" target="_blank" class="channel-btn api-channel">
+                            <i class="fas fa-code"></i> Free APIs
+                        </a>
+                        <a href="https://t.me/DANGER_FF_LIKE" target="_blank" class="channel-btn dev-channel">
+                            <i class="fas fa-user-tie"></i> Developer
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stats Overview -->
+        <div class="stats-overview">
+            <div class="stat-card">
+                <i class="fas fa-database"></i>
+                <div class="stat-info">
+                    <span class="stat-label">Total Items</span>
+                    <span class="stat-value" id="totalItemsStat">0</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-star"></i>
+                <div class="stat-info">
+                    <span class="stat-label">Unique Items</span>
+                    <span class="stat-value" id="uniqueItemsStat">0</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-tags"></i>
+                <div class="stat-info">
+                    <span class="stat-label">Item Types</span>
+                    <span class="stat-value" id="itemTypesStat">0</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-layer-group"></i>
+                <div class="stat-info">
+                    <span class="stat-label">Collections</span>
+                    <span class="stat-value" id="collectionsStat">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search and Filter Section -->
+        <div class="control-panel">
+            <!-- Search Section -->
+            <div class="search-section">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search items by name, ID, description, or tag...">
+                    <button id="searchBtn" class="btn-primary">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                    <button id="resetBtn" class="btn-secondary">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <div class="filter-group">
+                    <label><i class="fas fa-filter"></i> Filters</label>
+                    <div class="filter-grid">
+                        <select id="itemTypeFilter" class="filter-select">
+                            <option value="all">All Item Types</option>
+                        </select>
+                        
+                        <select id="collectionTypeFilter" class="filter-select">
+                            <option value="all">All Collections</option>
+                        </select>
+                        
+                        <select id="typeFilter" class="filter-select">
+                            <option value="all">All Types</option>
+                        </select>
+                        
+                        <select id="rarityFilter" class="filter-select">
+                            <option value="all">All Rarities</option>
+                        </select>
+                        
+                        <select id="obFilter" class="filter-select">
+                            <option value="all">All OB Versions</option>
+                        </select>
+                        
+                        <select id="tagFilter" class="filter-select">
+                            <option value="all">All Tags</option>
+                            <option value="ob33_52">OB33-OB52</option>
+                            <option value="older">Older than OB33</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Filters Display -->
+            <div class="active-filters" id="activeFilters">
+                <span class="filter-label">Active Filters:</span>
+                <div class="filter-chips" id="filterChips">
+                    <!-- Filter chips will appear here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div id="loading" class="loading-container">
+            <div class="spinner">
+                <div class="spinner-inner"></div>
+            </div>
+            <p>Loading item data from JSON...</p>
+            <p class="loading-sub">Automatically detecting item types and collections</p>
+        </div>
+
+        <!-- Items Grid -->
+        <div class="items-grid" id="itemsContainer">
+            <!-- Items will be loaded here -->
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination">
+            <!-- Pagination will be added here -->
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="logo.png" alt="Logo" class="footer-logo-img">
+                        <h3>DANGER ITEM LIBRARY</h3>
+                    </div>
+                    <p class="footer-description">
+                        Complete Free Fire item database system that automatically reads from <code>itemData.json</code>.
+                        All images loaded from GitHub PNG folder as <code>{ITEM_ID}.png</code>.
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h4><i class="fas fa-link"></i> Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="preview.html" class="footer-link"><i class="fas fa-eye"></i> Link Preview Demo</a></li>
+                        <li><a href="https://github.com/DANGER-FF/danger-item-library" target="_blank" class="footer-link"><i class="fab fa-github"></i> GitHub Repository</a></li>
+                        <li><a href="https://www.netlify.com" target="_blank" class="footer-link"><i class="fas fa-cloud"></i> Hosted on Netlify</a></li>
+                        <li><a href="https://t.me/danger_ff_like" target="_blank" class="footer-link"><i class="fas fa-code"></i> Report Bug</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4><i class="fas fa-users"></i> Our Channels</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://t.me/FREEFIRELIKESDANGER" target="_blank" class="footer-link"><i class="fab fa-telegram"></i> Main Channel</a></li>
+                        <li><a href="https://t.me/DANGERFREEAPIS" target="_blank" class="footer-link"><i class="fas fa-code"></i> Free APIs Channel</a></li>
+                        <li><a href="https://t.me/DANGER_FF_LIKE" target="_blank" class="footer-link"><i class="fas fa-user-tie"></i> Developer Channel</a></li>
+                        <li><a href="https://t.me/danger_ff_like" target="_blank" class="footer-link"><i class="fas fa-headset"></i> Contact Developer</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4><i class="fas fa-info-circle"></i> System Info</h4>
+                    <div class="system-info">
+                        <p><i class="fas fa-database"></i> Data Source: <code>itemData.json</code></p>
+                        <p><i class="fas fa-images"></i> Images: GitHub PNG folder</p>
+                        <p><i class="fas fa-sync"></i> Auto-detects: Item types & collections</p>
+                        <p><i class="fas fa-tags"></i> Tag Handling: OB33-OB52 & older</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2024 DANGER ITEM LIBRARY. All rights reserved.</p>
+                    <p class="developer-credit-footer">
+                        Developed with ❤️ by <a href="https://t.me/danger_ff_like" target="_blank" class="developer-link">t.me/danger_ff_like</a>
+                    </p>
+                </div>
+                <div class="footer-stats">
+                    <span id="footerItemsCount">0 items</span>
+                    <span id="footerTypesCount">0 types</span>
+                    <span id="footerUniqueCount">0 unique</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    
+    <!-- Developer Script -->
+    <script>
+        // Developer credit in console
+        console.log('%c🔥 DANGER ITEM LIBRARY 🔥', 'color: #ff0000; font-size: 24px; font-weight: bold;');
+        console.log('%cDeveloper: t.me/danger_ff_like', 'color: #ff6b6b; font-size: 16px;');
+        console.log('%cMain Channel: t.me/FREEFIRELIKESDANGER', 'color: #3b82f6;');
+        console.log('%cFree APIs: t.me/DANGERFREEAPIS', 'color: #10b981;');
+    </script>
+</body>
+</html>

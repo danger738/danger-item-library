@@ -1,0 +1,14 @@
+{
+  "name": "danger-item-library",
+  "version": "1.0.0",
+  "description": "Complete Free Fire Item Database System",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'Build successful'",
+    "start": "echo 'Starting server...'"
+  },
+  "keywords": ["freefire", "items", "database", "danger", "ff"],
+  "author": "DANGER FF - t.me/danger_ff_like",
+  "license": "MIT",
+  "dependencies": {}
+}
