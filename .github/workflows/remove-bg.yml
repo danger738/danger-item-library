@@ -25,7 +25,7 @@ jobs:
           python-version: "3.10"
 
       - name: Install Dependencies
-        run: pip install rembg pillow
+        run: pip install rembg pillow onnxruntime
 
       - name: Run Batch Script
         run: |
