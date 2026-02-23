@@ -17,51 +17,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Setup Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
 
-    - name: Install Dependencies
-      run: |
-        pip install rembg pillow
+      - name: Install Dependencies
+        run: pip install rembg pillow
 
-    - name: Process Images
-      run: |
-        mkdir -p PNG_TRANSPARENT
-        python <<EOF
-import os
-from rembg import remove
-from PIL import Image
+      - name: Run Batch Script
+        run: |
+          python process_batch.py \
+          ${{ github.event.inputs.start }} \
+          ${{ github.event.inputs.limit }}
 
-start = int("${{ github.event.inputs.start }}")
-limit = int("${{ github.event.inputs.limit }}")
-
-files = sorted([f for f in os.listdir("PNG") if f.endswith(".png")])
-selected = files[start:start+limit]
-
-for i, file in enumerate(selected):
-    input_path = os.path.join("PNG", file)
-    output_path = os.path.join("PNG_TRANSPARENT", file)
-
-    if os.path.exists(output_path):
-        continue
-
-    with Image.open(input_path) as img:
-        result = remove(img)
-        result.save(output_path)
-
-    print(f"Processed {i+1}/{len(selected)}: {file}")
-
-print("Batch Done")
-EOF
-
-    - name: Commit Results
-      run: |
-        git config user.name "github-actions"
-        git config user.email "action@github.com"
-        git add PNG_TRANSPARENT
-        git commit -m "Batch processed"
-        git push
+      - name: Commit Results
+        run: |
+          git config user.name "github-actions"
+          git config user.email "action@github.com"
+          git add PNG_TRANSPARENT
+          git commit -m "Batch processed" || echo "No changes"
+          git push
